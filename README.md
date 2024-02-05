@@ -1,4 +1,4 @@
-![Project Logo](https://www.shutterstock.com/image-vector/manager-vector-icon-style-bicolor-flat-364341761)
+
 
 Smart Contact Manager
 Overview
