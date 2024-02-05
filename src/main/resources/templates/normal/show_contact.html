@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>show contact</title>
+</head>
+
+<body>
+
+	<section>
+
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+
+				<h1 class="text-center">Your Contacts</h1>
+
+				<div class="search-container my-4">
+					<input onkeyup="search()" id="search-input" type="text" class="form-control"
+						placeholder="Search Your Contacts" />
+
+					<div class="search-result">
+						<h1>These is search result</h1>
+						<h1>These is result</h1>
+					</div>
+
+				</div>
+
+				<div class="table-responsive">
+
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#id</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">Phone</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="c :${contact}">
+								<th scope="row" th:text="${'SCM2023'+c.cid}">1</th>
+								<td>
+									<img src="" class="my_picture_profile" th:src="@{'/image/'+${c.image}}"
+										alt="#" />
+									<span th:text="${c.name}"></span>
+								</td>
+								<td>
+									<a href="#" th:href="@{'/user/contact_detail/'+${c.cid}}">
+										<span th:text="${c.email}"></span>
+									</a>
+
+								</td>
+								<td th:text="${c.phone}"></td>
+								<td>
+									<a href="#" th:href="@{'/user/delete/'+${c.cid}}"
+										class="btn btn-danger btn-small">Delete</a>
+
+									<form method="post" th:action="@{'/user/update-form/'+${c.cid}}">
+										<button type="submit" class="btn btn-primary btn-small">Update</button>
+									</form>
+
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				
+		</div>
+		<script>
+			$(document).ready(()=>{
+				$(".item").removeClass("active")
+				$("#view-link").addClass("active")
+			});
+		</script>
+
+	</section>
+
+</body>
+
+</html>
